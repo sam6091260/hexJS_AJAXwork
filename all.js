@@ -5,13 +5,9 @@ const apiPath =
 axios
   .get(apiPath)
   .then((res) => {
-    if (res.data && res.data.data) {
-      init(res.data.data);
-      initialCardCount = res.data.data.length;
-      updateInitialCardCount();
-    } else {
-      console.error("Invalid data structure:", res.data);
-    }
+    init(res.data.data);
+    initialCardCount = res.data.data.length;
+    updateInitialCardCount();
   })
   .catch((error) => {
     console.error("Error fetching data:", error);
@@ -65,6 +61,7 @@ selectElement.addEventListener("change", () => {
   const selectedValue =
     selectElement.options[selectElement.selectedIndex].value;
   const cards = document.querySelectorAll(".card");
+
   let matchedCount = 0;
 
   cards.forEach((card) => {
